@@ -1,0 +1,54 @@
+definitions:
+  main.album:
+    properties:
+      artist:
+        type: string
+      id:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /albums:
+    get:
+      consumes:
+      - application/json
+      description: 返回所有专辑
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.album'
+            type: array
+      summary: 获取专辑列表
+      tags:
+      - albums
+    post:
+      consumes:
+      - application/json
+      description: 添加一个新的专辑到列表
+      parameters:
+      - description: 专辑信息
+        in: body
+        name: album
+        required: true
+        schema:
+          $ref: '#/definitions/main.album'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.album'
+      summary: 添加专辑
+      tags:
+      - albums
+swagger: "2.0"
