@@ -15,80 +15,20 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/albums": {
+        "/dbalbums": {
             "get": {
-                "description": "返回所有专辑",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "Retrieves a list of all albums",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "albums"
                 ],
-                "summary": "获取专辑列表",
+                "summary": "Get Albums",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/main.album"
-                            }
-                        }
+                        "description": "OK"
                     }
-                }
-            },
-            "post": {
-                "description": "添加一个新的专辑到列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "albums"
-                ],
-                "summary": "添加专辑",
-                "parameters": [
-                    {
-                        "description": "专辑信息",
-                        "name": "album",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/main.album"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/main.album"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "main.album": {
-            "type": "object",
-            "properties": {
-                "artist": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
                 }
             }
         }

@@ -1,0 +1,6 @@
+database:
+  server: "172.25.81.17"
+  port: 1433
+  user: "mobileteam"
+  password: "Dev!8118#"
+  name: "MLM"
