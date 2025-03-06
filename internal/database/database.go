@@ -12,22 +12,22 @@ import (
 var DB *sql.DB // Global database connection
 
 // Connect initializes the MSSQL connection once
-func Connect(cfg *config.Config) error {
+func Connect(cfg *config.Config) (*sql.DB, error) {
 
 	dsn := fmt.Sprintf("server=%s;port=%d;user id=%s;password=%s;database=%s;encrypt=disable",
 		cfg.Database.Server, cfg.Database.Port, cfg.Database.User, cfg.Database.Password, cfg.Database.Name)
 
 	var err error
-	DB, err = sql.Open("sqlserver", dsn)
+	db, err := sql.Open("sqlserver", dsn)
 	if err != nil {
-		return fmt.Errorf("failed to connect to database: %w", err)
+		return nil, fmt.Errorf("failed to connect to database: %w", err)
 	}
 
-	err = DB.Ping()
+	err = db.Ping()
 	if err != nil {
-		return fmt.Errorf("database is not responding: %w", err)
+		return nil, fmt.Errorf("database is not responding: %w", err)
 	}
 
 	log.Println("✅ Connected to MSSQL database successfully")
-	return nil
+	return db, nil
 }

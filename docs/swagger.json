@@ -20,6 +20,50 @@
                     }
                 }
             }
+        },
+        "/insertalbum": {
+            "post": {
+                "description": "Retrieves a list of all albums",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "albums"
+                ],
+                "summary": "Insert Albums",
+                "parameters": [
+                    {
+                        "description": "Album details",
+                        "name": "album",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.InsertAlbum"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.InsertAlbum": {
+            "type": "object",
+            "properties": {
+                "artist": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

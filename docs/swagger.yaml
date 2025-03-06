@@ -1,3 +1,13 @@
+definitions:
+  model.InsertAlbum:
+    properties:
+      artist:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
@@ -10,6 +20,24 @@ paths:
         "200":
           description: OK
       summary: Get Albums
+      tags:
+      - albums
+  /insertalbum:
+    post:
+      description: Retrieves a list of all albums
+      parameters:
+      - description: Album details
+        in: body
+        name: album
+        required: true
+        schema:
+          $ref: '#/definitions/model.InsertAlbum'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Insert Albums
       tags:
       - albums
 swagger: "2.0"

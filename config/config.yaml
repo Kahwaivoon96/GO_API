@@ -1,6 +1,6 @@
 database:
-  server: "172.25.81.17"
+  server: "DESKTOP-LU4CAEP"
   port: 1433
-  user: "mobileteam"
-  password: "Dev!8118#"
-  name: "MLM"
+  user: "kahwaivoon"
+  password: "P@ssw0rd"
+  name: "Go"
