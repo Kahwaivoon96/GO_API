@@ -31,7 +31,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("❌ Error connecting to database: %v", err)
 	}
-	defer database.DB.Close() // automatically closes the database connection when the function exits.
+	defer db.Close() // automatically closes the database connection when the function exits.
 
 	albumRepo := repositories.NewAlbumRepository(db)
 	albumService := services.NewAlbumService(albumRepo)

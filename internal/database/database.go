@@ -9,8 +9,6 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 )
 
-var DB *sql.DB // Global database connection
-
 // Connect initializes the MSSQL connection once
 func Connect(cfg *config.Config) (*sql.DB, error) {
 
