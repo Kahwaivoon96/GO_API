@@ -18,6 +18,8 @@ import (
 	handlers "example/web-service-gin/internal/handlers"
 	repositories "example/web-service-gin/internal/repositories"
 
+	middlewares "example/web-service-gin/internal/middleware"
+
 	"log"
 )
 
@@ -38,6 +40,9 @@ func main() {
 	albumsHandler := handlers.NewAlbumHandler(albumService)
 
 	router := gin.Default()
+
+	router.Use(middlewares.AuthMiddleware())
+
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.GET("/dbalbums", albumsHandler.GetAlbums)
 	router.POST("/insertalbum", albumsHandler.InsertAlbum)
